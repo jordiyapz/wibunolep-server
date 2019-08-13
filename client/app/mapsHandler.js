@@ -68,27 +68,3 @@ function pushCoordToArray(latIn, lngIn) {
 		lineCoordinatesArray.shift();
 	lineCoordinatesArray.push(new google.maps.LatLng(latIn, lngIn));
 }
-const labAPTRG = {
-	lintang: -6.976508,
-	bujur: 107.630290
-}
-const Bandung = {
-	lintang 	: -6.9147439 , //Bandung
-	bujur 		: 107.609809875, //Bandung
-}
-var param = {
-	lintang: labAPTRG.lintang,
-	bujur: labAPTRG.bujur,
-	setLintang : function(data){
-		this.lintang = parseFloat(data);
-	},
-	setBujur : function(data){
-		this.bujur = parseFloat(data);
-	},
-	getLintang : function(){
-		return this.lintang;
-	},
-	getBujur : function(){
-		return this.bujur  ;
-	}
-};
