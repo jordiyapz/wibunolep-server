@@ -11,4 +11,4 @@ RUN npm install
 COPY ../client /app/client
 
 EXPOSE 7000
-CMD [ "node", "server.js" ]
+CMD [ "node", "index.js" ]
