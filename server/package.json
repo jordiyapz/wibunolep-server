@@ -1,6 +1,6 @@
 {
-  "name": "wibunolep",
-  "version": "0.0.1",
+  "name": "wibunolep-serverside",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "Jordi Yaputra",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "4.17.1",
     "socket.io": "2.2.0"
   },
   "devDependencies": {
