@@ -66,8 +66,9 @@ function redraw(Lintang, Bujur) {
 function pushCoordToArray(latIn, lngIn) {
 	if (lineCoordinatesArray.length > 20)
 		lineCoordinatesArray.shift();
-    lineCoordinatesArray.push(new google.maps.LatLng(latIn, lngIn));
-    const labAPTRG = {
+	lineCoordinatesArray.push(new google.maps.LatLng(latIn, lngIn));
+}
+const labAPTRG = {
 	lintang: -6.976508,
 	bujur: 107.630290
 }
@@ -91,7 +92,3 @@ var param = {
 		return this.bujur  ;
 	}
 };
-
-var lineCoordinatesArray = [];
-
-}
