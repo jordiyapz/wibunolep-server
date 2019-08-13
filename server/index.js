@@ -17,6 +17,9 @@ app.get('/', (req, res) => { //route '/'
 
 io.on('connection' , (socket)=> {
 	console.log('Client connected!');
+	socket.on('data', (dataObj) => {
+		socket.broadcast.emit('server-broadcast', dataObj);
+	})
 	socket.on('disconnect' , ()=> {
 		console.log('Client disconnected!');
 	});
