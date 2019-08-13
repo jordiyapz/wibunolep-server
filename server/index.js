@@ -15,6 +15,14 @@ app.get('/', (req, res) => { //route '/'
 	res.sendFile(path.resolve(clientPath, 'index.html'));
 })
 
+app.post('/data', (req, res) => {
+	const dataObj = {
+		dataHasil: req.body.data,
+		dataMentah: req.body.mentah
+	}
+	io.emit('server-broadcast', dataObj);
+})
+
 io.on('connection' , (socket)=> {
 	console.log('Client connected!');
 	socket.on('data', (dataObj) => {
