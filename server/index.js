@@ -5,7 +5,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io').listen(server); // import package socket.io
 const path = require('path'); // import package path (sudah default ada)
 
-const SERVERPORT = 7000;
+const SERVERPORT = process.env.PORT || 7000;
 
 // Middleware milik si express.js
 const clientPath = `${__dirname}/../client`;
