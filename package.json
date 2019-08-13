@@ -1,0 +1,16 @@
+{
+  "name": "wibunolep-server",
+  "version": "1.0.0",
+  "description": "To handle incoming data from local server and broadcast to all client",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "APTRG-server"
+  ],
+  "author": "Jordi Yaputra",
+  "license": "ISC"
+}
