@@ -1,6 +1,6 @@
 {
   "name": "wibunolep-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "To handle incoming data from local server and broadcast to all client",
   "main": "index.js",
   "scripts": {
