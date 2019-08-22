@@ -1,7 +1,7 @@
 class Hchart {
     constructor (elemId, title, y_axis_title, seriesName, color = "#808080") {
-        _data = null;
-        _seriesData = [];
+        this._data = null;
+        this._seriesData = [];
         Highcharts.chart(elemId, {
             title: { text: title },
 

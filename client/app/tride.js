@@ -1,21 +1,22 @@
 class Tride {
     constructor (elemId, acc, gyro) {
-        _tride = {
+        this._tride = {
             scene = 0,
             camera = 0,
             renderer = 0,
             model = 0,
             line = 0
         }
-        _rot = { x: Math.PI, y: Math.PI, z: Math.PI };
-        _acc = acc;
-        _gyro = gyro;
-        _gForce = { x: 0, y:0, z:0 };
-        _gyroPast = { x: 0, y: 0, z: 0 };
-        _gyroCalli = { x: 0, y: 0, z: 0 };
-        _angle = { x: 0, y:0, z:0 };
+        this._rot = { x: Math.PI, y: Math.PI, z: Math.PI };
+        this._acc = acc;
+        this._gyro = gyro;
+        this._gForce = { x: 0, y:0, z:0 };
+        this._gyroPast = { x: 0, y: 0, z: 0 };
+        this._gyroCalli = { x: 0, y: 0, z: 0 };
+        this._angle = { x: 0, y:0, z:0 };
 
-        _timePast, _timePresent = Date.now();
+        this._timePast = Date.now();
+        this._timePresent = Date.now();
 
         this._inisialisasi3D(elemId, 470, 280, 25);
     }

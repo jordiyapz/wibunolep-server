@@ -1,8 +1,8 @@
 class Gmap {
     constructor (elemId, coord) {
-        _lineCoordinatesArray = [];
-        _map = null;
-        _mapMarker = null;
+        this._lineCoordinatesArray = [];
+        this._map = null;
+        this._mapMarker = null;
         this._initMap(elemId, coord);
     }
 
