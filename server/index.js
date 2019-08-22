@@ -25,8 +25,13 @@ app.post('/data', (req, res) => {
 
 io.on('connection' , (socket)=> {
 	console.log('Client connected!');
-	socket.on('data', (dataObj) => {
-		socket.broadcast.emit('server-broadcast', dataObj);
+	socket.on('echo', (data) => {
+		socket.broadcast.emit('server-broadcast', data);
+	})
+	socket.on('data-mentah', (data) => {
+		const dataHasil = parsingRawDataV2(data);
+		const jsonObj = { dataHasil, dataMentah: data };
+		socket.broadcast.emit('server-broadcast', jsonObj);
 	})
 	socket.on('disconnect' , ()=> {
 		console.log('Client disconnected!');
@@ -36,3 +41,19 @@ io.on('connection' , (socket)=> {
 server.listen(SERVERPORT, () => {
     console.log('Server started on ', SERVERPORT);
 });
+
+/**
+ *
+ * @param {String} data
+ * @returns
+ *  [<latitude>, <longitude>, <humidity>, <temperature>, <acc_x>, <acc_x>, <acc_x>, <gyro_x>, <gyro_y>, <gyro_z>]
+ */
+function rawdataParserV2 (data) {
+	const regex = /([0-9|\.|-]*)/g;
+	let hasilParsing = [];
+		data.match(regex).forEach(element => {
+			if (element != '')
+				hasilParsing.push(element);
+		});
+		return hasilParsing;
+}
