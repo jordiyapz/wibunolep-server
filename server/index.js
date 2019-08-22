@@ -29,7 +29,7 @@ io.on('connection' , (socket)=> {
 		socket.broadcast.emit('server-broadcast', data);
 	})
 	socket.on('data-mentah', (data) => {
-		const dataHasil = parsingRawDataV2(data);
+		const dataHasil = rawdataParserV2(data);
 		const jsonObj = { dataHasil, dataMentah: data };
 		socket.broadcast.emit('server-broadcast', jsonObj);
 	})
