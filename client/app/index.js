@@ -130,7 +130,7 @@ function update() {
 
         let i = 0;
         // untuk setiap kunci-elemen di dom
-        for (key in dom) {
+        for (let key in dom) {
             if (key == 'raw_data')
                 // update elemen dom 'raw_data' dengan nilai dataMentah
                 dom.key.html(dataMentah);
