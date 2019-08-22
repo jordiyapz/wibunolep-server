@@ -27,13 +27,13 @@ const gyro = { x: 0, y: 0, z: 0 };
 let chart = {
     ready : false,
     acc : { x: null, y: null, z: null },
-    alt : null
+    temp : null
 }
 
 const map = new Gmap('map', coord); //pass by ref {coord}
 const tride = new Tride('tride-model', acc, gyro); //pass by ref {acc, gyro}
 
-const gaugetemp = new LinearGauge({
+const gaugeTemp = new LinearGauge({
     renderTo: 'gaugeTemp',
     width: 100,
     height: 300,
@@ -147,11 +147,21 @@ function update() {
         // [latitude,longitude,humidity,temperature,acc_x,acc_y,acc_z,gyro_x,gyro_y,gyro_z,raw_data]
         coord.x = dataHasil[0];
         coord.y = dataHasil[1];
+
         gaugeHumid.value = dataHasil[2];
-        gaugetemp.value = dataHasil[3];
+        gaugeTemp.value = dataHasil[3];
+
         acc.x = dataHasil[4];
         acc.y = dataHasil[5];
         acc.z = dataHasil[6];
+
+        // update chart
+        if (chart.ready) {
+            chart.temp.update(gaugeTemp.value);
+            chart.acc.x.update(acc.x);
+            chart.acc.y.update(acc.y);
+            chart.acc.z.update(acc.z);
+        }
 
         tride.backupGyroData(); //backup sebelum diupdate
 
@@ -173,5 +183,5 @@ $(() => {
     chart.acc.x = new Hchart ('grafik-acc-x', 'Grafik Acc.x', 'Percepatan (m/s^2)', 'acc.x');
     chart.acc.y = new Hchart ('grafik-acc-y', 'Grafik Acc.y', 'Percepatan (m/s^2)', 'acc.y');
     chart.acc.z = new Hchart ('grafik-acc-z', 'Grafik Acc.z', 'Percepatan (m/s^2)', 'acc.z');
-    chart.alt = new Hchart ('grafikAltitude', 'Grafik Altitude', 'Tinggi (meter)', 'alt');
+    chart.temp = new Hchart ('grafik-temperatur', 'Grafik Temperatur', 'Suhu (celcius)', 'temp');
 })

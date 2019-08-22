@@ -1,11 +1,11 @@
 class Tride {
     constructor (elemId, acc, gyro) {
         this._tride = {
-            scene = 0,
-            camera = 0,
-            renderer = 0,
-            model = 0,
-            line = 0
+            scene : 0,
+            camera : 0,
+            renderer : 0,
+            model : 0,
+            line : 0
         }
         this._rot = { x: Math.PI, y: Math.PI, z: Math.PI };
         this._acc = acc;
@@ -49,13 +49,9 @@ class Tride {
         this._tride.model.rotation.z = this._tride.line.rotation.z = Math.PI;
         this._tride.camera.position.z = jarak;
 
-        var animate = function () {
-            requestAnimationFrame( animate );
-            this._tride.renderer.render( this._tride.scene, this._tride.camera );
-        };
-
-        animate();
+        doAnimation(this._tride);
     }
+
 
     rotateModel() {
         /**
@@ -119,3 +115,11 @@ class Tride {
         this._gyroCalli.z /= 5000;
     }
 }
+
+function doAnimation (tride) {
+    animate =  () => {
+        requestAnimationFrame( animate );
+        tride.renderer.render( tride.scene, tride.camera );
+    }
+}
+

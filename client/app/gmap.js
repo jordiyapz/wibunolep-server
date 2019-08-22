@@ -8,6 +8,10 @@ class Gmap {
 
     _initMap(elemId, coord) {
         const {lintang, bujur} = coord;
+
+        // wait for google to be loaded perfectly
+        while (!google) {}
+
         // Make map
         this._map = new google.maps.Map(document.getElementById(elemId), {
             zoom: 17,
@@ -19,7 +23,7 @@ class Gmap {
         });
 
         //make marker
-        _mapMarker = new google.maps.Marker({
+        this._mapMarker = new google.maps.Marker({
             position: {
                 lat: lintang,
                 lng: bujur
@@ -31,7 +35,7 @@ class Gmap {
             map: this._map
         });
 
-        _mapMarker.setMap(map);
+        this._mapMarker.setMap(this._map);
     }
 
     update (coord) {
