@@ -30,8 +30,7 @@ io.on('connection' , (socket)=> {
 	})
 	socket.on('data-mentah', (data) => {
 		const dataHasil = rawdataParserV2(data);
-		const jsonObj = { dataHasil, dataMentah: data };
-		socket.broadcast.emit('server-broadcast', jsonObj);
+		socket.broadcast.emit('server-broadcast', { dataHasil, dataMentah: data });
 	})
 	socket.on('disconnect' , ()=> {
 		console.log('Client disconnected!');

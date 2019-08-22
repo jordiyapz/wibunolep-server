@@ -43,7 +43,6 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<!-- [<latitude>, <longitude>, <humidity>, <temperature>, <acc_x>, <acc_x>, <acc_x>, <gyro_x>, <gyro_y>, <gyro_z>] -->
 							<th>Latitude</th>
 							<th>Longitude</th>
 							<th>Humidity</th>
@@ -57,24 +56,18 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<!-- <td id="altitude">data </td>
-							<td id="temperature">data</td>
+						<tr id = "component-data">
 							<td id="latitude">data</td>
 							<td id="longitude">data</td>
-							<td id="x">data</td>
-							<td id="y">data</td>
-							<td id="z">data</td> -->
-							<td id="Latitude">data</td>
-							<td id="Longitude">data</td>
-							<td id="Humidity">data</td>
-							<td id="Temperature">data</td>
-							<td id="Acc_x">data</td>
-							<td id="Acc_y">data</td>
-							<td id="Acc_z">data</td>
-							<td id="Gyro_x">data</td>
-							<td id="Gyro_y">data</td>
-							<td id="Gyro_z">data</td>
+							<td id="humidity">data</td>
+							<td id="temperature">data</td>
+							<td id="acc_x">data</td>
+							<td id="acc_y">data</td>
+							<td id="acc_z">data</td>
+							<td id="gyro_x">data</td>
+							<td id="gyro_y">data</td>
+							<td id="gyro_z">data</td>
+							<td id="raw_data">data</td>
 						</tr>
 					</tbody>
 				</table>
@@ -149,29 +142,32 @@
 		</footer>
 
 	</body>
+
+	<!-- Jquery, Bootstrap, Highcharts -->
 	<script src="vendor/jquery/jquery-3.3.1.min.js"></script>
 	<script src="vendor/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 	<script src="vendor/Highcharts-6.0.7/code/highcharts.js"></script>
 
-	<!-- GOogle Maps -->
+	<!-- Google Maps -->
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
+
+	<!-- Google Maps API -->
+	<!-- https://maps.googleapis.com/maps/api/js?key=AIzaSyAn1j9o_X6fVGOOQLoBjnzAr1JA7B3vSvA&callback=initMap -->
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANkLfRNm2-1tREG2vlxL6MRpNJXGszb5M&callback=initMap">
+	</script>
 
 	<!-- Three JS for 3D Model -->
 	<script src="vendor/THREE/THREE.js"></script>
 	<!-- Gauge -->
-	<script src="vendor/gauge/gauge.min.js">	</script>
+	<script src="vendor/gauge/gauge.min.js"></script>
+	<!-- socket.io client -->
+	<script src="/socket.io/socket.io.js"></script>
 
-
-	<script src="/socket.io/socket.io.js"></script> <!-- Import socket io -->
-	<script src="app/mapsHandler.js"></script> <!-- import data js -->
-	<script src="app/threeHandler.js"></script> <!-- import data js -->
-	<script src="app/data.js"></script> <!-- import data js -->
-
-	<!-- <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn1j9o_X6fVGOOQLoBjnzAr1JA7B3vSvA&callback=initMap">
-	</script> -->
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANkLfRNm2-1tREG2vlxL6MRpNJXGszb5M&callback=initMap">
-    </script>
+	<!-- import app -->
+	<script src="app/tride.js"></script>
+	<script src="app/gmap.js"></script>
+	<script src="app/highchart.js"></script>
+	<script src="app/index.js"></script>
 
 </html>
