@@ -35,7 +35,6 @@ class Hchart {
                 marginRight: 10,
                 events: {
                     load: () => {
-                        console.log(this);
                         this._loaded = true;
                     }
                 }
@@ -52,7 +51,6 @@ class Hchart {
     }
     _onLoad () {
         let checker = setInterval(() => {
-            console.log(this._loaded);
             if (this._loaded) {
                 clearInterval(checker);
                 this._chartOnLoad();
@@ -60,7 +58,6 @@ class Hchart {
         }, 25);
     }
     _chartOnLoad () {
-        console.log('Chart loaded');
         const series = this._chart.series[0];
         setInterval(() => {
             const x = (new Date()).getTime(); // current time
@@ -75,9 +72,9 @@ function chartOnLoad (chart) {
     // set up the updating of the chart each second
     const series = chartseries[0];
     setInterval(() => {
-            const x = (new Date()).getTime(); // current time
-            const y = this._data;
-            const shift_rule = series.data.length > 20;
-            series.addPoint([x, y], true, shift_rule);
+        const x = (new Date()).getTime(); // current time
+        const y = this._data;
+        const shift_rule = series.data.length > 20;
+        series.addPoint([x, y], true, shift_rule);
     }, 1000);
 }
