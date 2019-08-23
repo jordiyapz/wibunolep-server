@@ -132,12 +132,12 @@ function update() {
         for (let key in dom) {
             if (key == 'raw_data')
                 // update elemen dom 'raw_data' dengan nilai dataMentah
-                dom[key].html(dataMentah);
+                dom[key].textContent = dataMentah;
             else {
                 // ubah semua dataHasil (tipe string) menjadi tipe float
                 dataHasil[i] = parseFloat(dataHasil[i]);
                 // update elemen dom di html
-                    dom[key].html(dataHasil[i]);
+                    dom[key].textContent = dataHasil[i];
                 i++;
             }
         }
