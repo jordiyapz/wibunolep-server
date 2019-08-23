@@ -1,7 +1,8 @@
 class Hchart {
     constructor (elemId, title, y_axis_title, seriesName, color = "#808080") {
         this._data = 0;
-        this._seriesData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        this._seriesData = [];
+        this._loaded = false;
         this._chart = Highcharts.chart(elemId, {
             title: { text: title },
 
@@ -32,29 +33,45 @@ class Hchart {
                 type: 'line',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
-                events: { load: () => {} }
+                events: {
+                    load: () => {
+                        this._loaded = true;
+                    }
+                }
             },
 
         })
 
-        this._chart.hcEvents.load[0] = () => {
-            console.log('hcEvent prompted');
-            const series = this._chart.series[0];
-            setInterval(() => {
-                const x = (new Date()).getTime(); // current time
-                const y = this._data;
-                const shift_rule = series.data.length > 20;
-                series.addPoint([x, y], true, shift_rule);
-            }, 1000);
+        // this._chart.hcEvents.load[0] = () => {
+        if (this._detectLoad()) {
+            this._chartOnLoad();
         }
     }
 
     update (data) {
         this._data = data;
     }
+    _detectLoad () {
+        let checker = setInterval(() => {
+            if (this._loaded) {
+                clearInterval(checker);
+                return true;
+            }
+        }, 25);
+    }
+    _chartOnLoad () {
+        console.log('Chart loaded');
+        const series = this._chart.series[0];
+        setInterval(() => {
+            const x = (new Date()).getTime(); // current time
+            const y = this._data;
+            const shift_rule = series.data.length > 20;
+            series.addPoint([x, y], true, shift_rule);
+        }, 1000);
+    }
 }
 
-function chartOnLoad (chartseries) {
+function chartOnLoad (chart) {
     // set up the updating of the chart each second
     const series = chartseries[0];
     setInterval(() => {
