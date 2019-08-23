@@ -25,10 +25,8 @@ class Tride {
         this._tride.scene = new THREE.Scene();
         this._tride.camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
         this._tride.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        this._tride.renderer.setSize( width, height);
-
-        // document.body.appendChild( tride.renderer.domElement );
-        // $( tride.renderer.domElement ).append( '#tride-model' );
+        this._tride.renderer.setSize(width, height);
+        console.log(this._tride.renderer);
         document.getElementById(elemId).appendChild(this._tride.renderer.domElement);
         // var geometry = new THREE.TorusBufferGeometry( 10, 3, 16, 100 );
         var geometry = new THREE.CylinderGeometry( 15, 15, 1, 3 );
@@ -117,9 +115,10 @@ class Tride {
 }
 
 function doAnimation (tride) {
-    animate =  () => {
+    let animate = () => {
         requestAnimationFrame( animate );
         tride.renderer.render( tride.scene, tride.camera );
     }
+    animate();
 }
 
