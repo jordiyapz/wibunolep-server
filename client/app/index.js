@@ -30,6 +30,7 @@ let chart = {
     temp : null
 }
 
+const socket = io.connect();
 const map = new Gmap('map', coord); //pass by ref {coord}
 const tride = new Tride('tride-model', acc, gyro); //pass by ref {acc, gyro}
 
@@ -122,8 +123,6 @@ const gaugeHumid = new RadialGauge({
 }).draw();
 
 function update() {
-    const socket = io.connect();
-
     socket.on('server-broadcast', data => {
         // data terdiri atas dataHasil dan dataMentah
         const {dataHasil, dataMentah} = data;
@@ -133,12 +132,12 @@ function update() {
         for (let key in dom) {
             if (key == 'raw_data')
                 // update elemen dom 'raw_data' dengan nilai dataMentah
-                dom.key.html(dataMentah);
+                dom[key].html(dataMentah);
             else {
                 // ubah semua dataHasil (tipe string) menjadi tipe float
                 dataHasil[i] = parseFloat(dataHasil[i]);
                 // update elemen dom di html
-                    dom.key.html(dataHasil[i]);
+                    dom[key].html(dataHasil[i]);
                 i++;
             }
         }
