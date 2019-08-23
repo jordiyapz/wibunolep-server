@@ -183,4 +183,5 @@ $(() => {
     chart.acc.y = new Hchart ('grafik-acc-y', 'Grafik Acc.y', 'Percepatan (m/s^2)', 'acc.y');
     chart.acc.z = new Hchart ('grafik-acc-z', 'Grafik Acc.z', 'Percepatan (m/s^2)', 'acc.z');
     chart.temp = new Hchart ('grafik-temperatur', 'Grafik Temperatur', 'Suhu (celcius)', 'temp');
+    chart.ready = true;
 })
