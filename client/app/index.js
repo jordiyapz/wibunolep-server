@@ -155,12 +155,12 @@ function update() {
         acc.z = dataHasil[6];
 
         // update chart
-        if (chart.ready) {
+        // if (chart.ready) {
             chart.temp.update(gaugeTemp.value);
             chart.acc.x.update(acc.x);
             chart.acc.y.update(acc.y);
             chart.acc.z.update(acc.z);
-        }
+        // }
 
         tride.backupGyroData(); //backup sebelum diupdate
 
