@@ -1,7 +1,7 @@
 class Hchart {
     constructor (elemId, title, y_axis_title, seriesName, color = "#808080") {
         this._data = 0;
-        this._seriesData = [];
+        this._seriesData = [0];
         this._loaded = false;
         this._chart = Highcharts.chart(elemId, {
             title: { text: title },
@@ -35,6 +35,7 @@ class Hchart {
                 marginRight: 10,
                 events: {
                     load: () => {
+                        console.log(this);
                         this._loaded = true;
                     }
                 }
@@ -43,19 +44,18 @@ class Hchart {
         })
 
         // this._chart.hcEvents.load[0] = () => {
-        if (this._detectLoad()) {
-            this._chartOnLoad();
-        }
+        this._onLoad();
     }
 
     update (data) {
         this._data = data;
     }
-    _detectLoad () {
+    _onLoad () {
         let checker = setInterval(() => {
+            console.log(this._loaded);
             if (this._loaded) {
                 clearInterval(checker);
-                return true;
+                this._chartOnLoad();
             }
         }, 25);
     }
