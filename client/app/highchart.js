@@ -1,7 +1,7 @@
 class Hchart {
     constructor (elemId, title, y_axis_title, seriesName, color = "#808080") {
         this._data = 0;
-        this._seriesData = [];
+        this._seriesData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         this._chart = Highcharts.chart(elemId, {
             title: { text: title },
 
@@ -38,12 +38,13 @@ class Hchart {
         })
 
         this._chart.hcEvents.load[0] = () => {
+            console.log('hcEvent prompted');
             const series = this._chart.series[0];
             setInterval(() => {
-                    const x = (new Date()).getTime(); // current time
-                    const y = this._data;
-                    const shift_rule = series.data.length > 20;
-                    series.addPoint([x, y], true, shift_rule);
+                const x = (new Date()).getTime(); // current time
+                const y = this._data;
+                const shift_rule = series.data.length > 20;
+                series.addPoint([x, y], true, shift_rule);
             }, 1000);
         }
     }
