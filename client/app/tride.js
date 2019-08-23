@@ -66,9 +66,9 @@ class Tride {
     }
 
     processAccelData() {
-        this._gForce.x = _acc.x/16384.0;
-        this._gForce.y = _acc.y/16384.0;
-        this._gForce.z = _acc.z/16384.0;
+        this._gForce.x = this._acc.x/16384.0;
+        this._gForce.y = this._acc.y/16384.0;
+        this._gForce.z = this._acc.z/16384.0;
     }
 
     backupGyroData() {
