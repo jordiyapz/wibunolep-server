@@ -1,7 +1,7 @@
 class Hchart {
     constructor (elemId, title, y_axis_title, seriesName, color = "#808080") {
         this._data = 0;
-        this._seriesData = [0];
+        this._seriesData = [{ x: (new Date()).getTime(), y: 0 }];
         this._loaded = false;
         this._chart = Highcharts.chart(elemId, {
             title: { text: title },
@@ -23,14 +23,14 @@ class Hchart {
             tooltip: {
                 formatter: () => {
                     const name = seriesName;
-                    const date = Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x);
+                    const _date = Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x);
                     const value = Highcharts.numberFormat(this.y, 2);
-                    return `<b>${name}</b><br/>${date}<br/>${value}`;
+                    return `<b>${name}</b><br/>${_date}<br/>${value}`;
                 }
             },
 
             chart: {
-                type: 'line',
+                type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
