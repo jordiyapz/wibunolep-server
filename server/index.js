@@ -15,6 +15,7 @@ app.get('/', (req, res) => { //route '/'
 	res.sendFile(path.resolve(clientPath, 'index.html'));
 })
 
+// via HTTP connection
 app.post('/data', (req, res) => {
 	const dataObj = {
 		dataHasil: req.body.data,

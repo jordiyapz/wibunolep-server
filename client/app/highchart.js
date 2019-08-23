@@ -21,7 +21,7 @@ class Hchart {
 
             tooltip: {
                 formatter: () => {
-                    const name = this.series.name;
+                    const name = seriesName;
                     const date = Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x);
                     const value = Highcharts.numberFormat(this.y, 2);
                     return `<b>${name}</b><br/>${date}<br/>${value}`;
