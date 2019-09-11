@@ -26,9 +26,6 @@ app.post('/data', (req, res) => {
 
 io.on('connection' , (socket)=> {
 	console.log('Client connected!');
-	socket.on('echo', (data) => {
-		socket.broadcast.emit('server-broadcast', data);
-	})
 	socket.on('data-mentah', (data) => {
 		const dataHasil = rawdataParserV2(data);
 		socket.broadcast.emit('server-broadcast', { dataHasil, dataMentah: data });
