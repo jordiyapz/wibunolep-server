@@ -27,9 +27,10 @@ io.on('connection' , (socket)=> {
 		console.log('Client disconnected!');
 	});
 	mqtt_client.on('message', (topic, payload, packet) => {
-		if (topic == topics[3]) {
+		if (topic == '/AsCender/payload') {
 			const data = payload.toString();
 			const dataHasil = rawdataParserV2(data);
+			// console.log(data);
 			socket.broadcast.emit('server-broadcast', { dataHasil, dataMentah: data });
 		}
 	})

@@ -24,13 +24,12 @@ const client = mqtt.connect(mqtt_url, mqtt_client_options);
 */
 client.on('connect', connack => {
 	console.log('Connected to mqtt server');
-	// console.log(connack);
     client.subscribe(topics);
     client.publish(topics[0], mqtt_client_options.clientId);
-    client.on('message', (topic, payload, packet) => {
-        const message = payload.toString();
-        console.log(`Received from ${topic}: ${message}`);
-    })
+    // client.on('message', (topic, payload, packet) => {
+    //     const message = payload.toString();
+    //     console.log(`Received from ${topic}: ${message}`);
+    // })
 })
 
 client.on('error', error => {
