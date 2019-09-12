@@ -1,19 +1,12 @@
+// Import
+const app = require('./app');
+const mqtt_client = require("./mqtt-client");
+
 // EXPRESS DAN SOCKET IO
-const express = require('express'); // import package express
-const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server); // import package socket.io
-const path = require('path'); // import package path (sudah default ada)
 
 const SERVERPORT = process.env.PORT || 7000;
-
-// Middleware milik si express.js
-const clientPath = `${__dirname}/../client`;
-app.use(express.static(clientPath));
-
-app.get('/', (req, res) => { //route '/'
-	res.sendFile(path.resolve(clientPath, 'index.html'));
-})
 
 // via HTTP connection
 app.post('/data', (req, res) => {
@@ -33,6 +26,13 @@ io.on('connection' , (socket)=> {
 	socket.on('disconnect' , ()=> {
 		console.log('Client disconnected!');
 	});
+	mqtt_client.on('message', (topic, payload, packet) => {
+		if (topic == topics[3]) {
+			const data = payload.toString();
+			const dataHasil = rawdataParserV2(data);
+			socket.broadcast.emit('server-broadcast', { dataHasil, dataMentah: data });
+		}
+	})
 });
 
 server.listen(SERVERPORT, () => {
