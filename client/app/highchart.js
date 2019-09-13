@@ -33,11 +33,11 @@ class Hchart {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
-                events: {
-                    load: () => {
-                        this._loaded = true;
-                    }
-                }
+                // events: {
+                //     load: () => {
+                //         this._loaded = true;
+                //     }
+                // }
             },
 
         })
