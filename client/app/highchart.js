@@ -6,6 +6,14 @@ class Hchart {
         this._chart = Highcharts.chart(elemId, {
             title: { text: title },
 
+            credits: {
+                enabled: false
+            },
+
+            time: {
+                useUTC: false
+            },
+
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150
@@ -29,16 +37,22 @@ class Hchart {
                 }
             },
 
+            // Warna untuk setiap jenis data
+            colors: ['#2bC08f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+                '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+
             chart: {
-                type: 'spline',
+                type: 'areaspline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
-                // events: {
-                //     load: () => {
-                //         this._loaded = true;
-                //     }
-                // }
+                plotBorderColor: '#606063'
             },
+
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            }
 
         })
 

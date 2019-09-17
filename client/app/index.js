@@ -145,8 +145,8 @@ function update() {
 
         // dataHasil berupa array
         // [header, latitude,longitude,humidity,temperature,acc_x,acc_y,acc_z,gyro_x,gyro_y,gyro_z,raw_data]
-        coord.x = dataHasil[0];
-        coord.y = dataHasil[1];
+        coord.lintang = dataHasil[0];
+        coord.bujur = dataHasil[1];
 
         gaugeHumid.value = dataHasil[2];
         gaugeTemp.value = dataHasil[3];
