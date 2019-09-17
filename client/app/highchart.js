@@ -10,10 +10,6 @@ class Hchart {
                 enabled: false
             },
 
-            time: {
-                useUTC: false
-            },
-
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150
