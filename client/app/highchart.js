@@ -46,8 +46,10 @@ class Hchart {
         this._onLoad();
     }
 
-    update (data) {
-        this._data = data;
+    update (_data) {
+        // this._data = data;
+        // console.log(this._chart.series);
+        this._chart.series[0].setData(_data);
     }
     _onLoad () {
         let checker = setInterval(() => {

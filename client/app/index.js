@@ -124,26 +124,27 @@ const gaugeHumid = new RadialGauge({
 
 function update() {
     socket.on('server-broadcast', data => {
-        // data terdiri atas dataHasil dan dataMentah
-        const {dataHasil, dataMentah} = data;
-
+        // data terdiri atas clean, raw, series
+        const dataHasil = data.clean;
+        const dataMentah = data.raw;
+        // console.log (data);
         let i = 0;
         // untuk setiap kunci-elemen di dom
         for (let key in dom) {
-            if (key == 'raw_data')
+            if (key == 'raw_data') {
                 // update elemen dom 'raw_data' dengan nilai dataMentah
                 dom[key].textContent = dataMentah;
-            else {
+            } else {
                 // ubah semua dataHasil (tipe string) menjadi tipe float
                 dataHasil[i] = parseFloat(dataHasil[i]);
                 // update elemen dom di html
-                    dom[key].textContent = dataHasil[i];
+                dom[key].textContent = dataHasil[i];
                 i++;
             }
         }
 
         // dataHasil berupa array
-        // [latitude,longitude,humidity,temperature,acc_x,acc_y,acc_z,gyro_x,gyro_y,gyro_z,raw_data]
+        // [header, latitude,longitude,humidity,temperature,acc_x,acc_y,acc_z,gyro_x,gyro_y,gyro_z,raw_data]
         coord.x = dataHasil[0];
         coord.y = dataHasil[1];
 
@@ -155,12 +156,14 @@ function update() {
         acc.z = dataHasil[6];
 
         // update chart
-        // if (chart.ready) {
-            chart.temp.update(gaugeTemp.value);
-            chart.acc.x.update(acc.x);
-            chart.acc.y.update(acc.y);
-            chart.acc.z.update(acc.z);
-        // }
+        if (chart.ready) {
+            const {series} = data
+            // console.log(series.acc_x);
+            chart.temp.update(series.temp);
+            chart.acc.x.update(series.acc_x);
+            chart.acc.y.update(series.acc_y);
+            chart.acc.z.update(series.acc_z);
+        }
 
         tride.backupGyroData(); //backup sebelum diupdate
 
