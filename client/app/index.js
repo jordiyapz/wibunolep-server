@@ -1,11 +1,4 @@
-const labAPTRG = {
-	lintang: -6.976508,
-	bujur: 107.630290
-}
-const Bandung = {
-	lintang 	: -6.9147439 , //Bandung
-	bujur 		: 107.609809875, //Bandung
-}
+
 const dom = {
     latitude: document.getElementById('latitude'),
     longitude: document.getElementById('longitude'),
@@ -20,7 +13,6 @@ const dom = {
     raw_data: document.getElementById('raw_data')
 }
 
-const coord = { lintang: labAPTRG.lintang, bujur: labAPTRG.bujur };
 const acc = { x: 0, y: 0, z: 0 };
 const gyro = { x: 0, y: 0, z: 0 };
 
@@ -31,8 +23,8 @@ let chart = {
 }
 
 const socket = io.connect();
-const map = new Gmap('map', coord); //pass by ref {coord}
 const tride = new Tride('tride-model', acc, gyro); //pass by ref {acc, gyro}
+
 
 const gaugeTemp = new LinearGauge({
     renderTo: 'gaugeTemp',
@@ -175,7 +167,8 @@ function update() {
         tride.processAccelData();
         tride.processGyroData();
 
-        map.update(coord);
+        if (map)
+            map.update(coord);
     })
 }
 

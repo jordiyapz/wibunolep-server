@@ -15,5 +15,4 @@ assets.forEach((asset) => {
         document.getElementById(asset.id).setAttribute('src', this.src);
     }
     img.src = asset.src;
-    debugger;
 })

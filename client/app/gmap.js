@@ -63,3 +63,19 @@ class Gmap {
         this._lineCoordinatesArray.push(new google.maps.LatLng(lintang, bujur));
     }
 }
+
+const labAPTRG = {
+	lintang: -6.976508,
+	bujur: 107.630290
+}
+const Bandung = {
+	lintang 	: -6.9147439 , //Bandung
+	bujur 		: 107.609809875, //Bandung
+}
+
+const coord = { lintang: labAPTRG.lintang, bujur: labAPTRG.bujur };
+let map = null;
+
+function initMap() {
+    map = new Gmap('map', coord); //pass by ref {coord}
+}
