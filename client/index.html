@@ -1,170 +1,172 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>GUI Cthulhu</title>
-		<link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.css">
-		<link rel="stylesheet" href="./styles/style.css">
-		<!-- <link rel="stylesheet" href="vendor/vendor/Highcharts-6.0.7/code/css/highcharts.css"> -->
-	</head>
-	<!-- <body> -->
-	<body onload="update()">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
-					<a href="#" class="navbar-left"><img id="main-logo" src="./image/kisspng-cthulhu-lovecraftian-horror-computer-icons-rpg-mak-5afaeb6be48dd9.5476958415263937079362.png"></a>
-					<a class="navbar-brand" href="#"><span id="main-brand">GUI Cthulhu</span></a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</nav>
 
-		<div class="container">
-			<br>
-			<br>
-			<br>
+<head>
+  <link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GUI Cthulhu</title>
+  <link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/style.css">
 
-			<!-- Tabel Data-data  -->
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Latitude</th>
-							<th>Longitude</th>
-							<th>Humidity</th>
-							<th>Temperature</th>
-							<th>Acc_x</th>
-							<th>Acc_y</th>
-							<th>Acc_z</th>
-							<th>Gyro_x</th>
-							<th>Gyro_y</th>
-							<th>Gyro_z</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr id = "component-data">
-							<td id="latitude">data</td>
-							<td id="longitude">data</td>
-							<td id="humidity">data</td>
-							<td id="temperature">data</td>
-							<td id="acc_x">data</td>
-							<td id="acc_y">data</td>
-							<td id="acc_z">data</td>
-							<td id="gyro_x">data</td>
-							<td id="gyro_y">data</td>
-							<td id="gyro_z">data</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-left"><img id="main-logo"
+            src="./image/kisspng-cthulhu-lovecraftian-horror-computer-icons-rpg-mak-5afaeb6be48dd9.5476958415263937079362.png"></a>
+        <a class="navbar-brand" href="#"><span id="main-brand">GUI Cthulhu</span></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+    <br>
+    <br>
+    <br>
+
+    <!-- Tabel Data-data  -->
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Humidity</th>
+            <th>Temperature</th>
+            <th>Acc_x</th>
+            <th>Acc_y</th>
+            <th>Acc_z</th>
+            <th>Gyro_x</th>
+            <th>Gyro_y</th>
+            <th>Gyro_z</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="component-data">
+            <td id="latitude">data</td>
+            <td id="longitude">data</td>
+            <td id="humidity">data</td>
+            <td id="temperature">data</td>
+            <td id="acc_x">data</td>
+            <td id="acc_y">data</td>
+            <td id="acc_z">data</td>
+            <td id="gyro_x">data</td>
+            <td id="gyro_y">data</td>
+            <td id="gyro_z">data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
 
-			<div class="row">
-				<div class="row" style="margin: 10px 0;">
-					<div class="col-sm-9 text-center">
-						<h4>Map</h4>
-						<div id="map" style="width:100%; height: 500px; background-color: grey;"></div>
-					</div>
+    <div class="row">
+      <div class="row" style="margin: 10px 0;">
+        <div class="col-sm-9 text-center">
+          <h4>Map</h4>
+          <div id="map" style="width:100%; height: 500px; background-color: grey;"></div>
+        </div>
 
-					<div class="col-sm-3 text-center">
-						<h4>Humidity</h4>
-						<canvas id="gaugeHumid"></canvas>
-						<h4>Temperature</h4>
-						<canvas id="gaugeTemp"> </canvas>
-					</div>
-				</div>
-			</div>
+        <div class="col-sm-3 text-center">
+          <h4>Humidity</h4>
+          <canvas id="gaugeHumid"></canvas>
+          <h4>Temperature</h4>
+          <canvas id="gaugeTemp"> </canvas>
+        </div>
+      </div>
+    </div>
 
-			<!-- Raw Data -->
-			<div class="table-responsive">
-				<table class="table table-condensed">
-					<thead>
-						<th>Data Mentah</th>
-					</thead>
-					<tbody>
-						<tr class="info">
-							<td>
-								<div id="raw_data">data</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+    <!-- Raw Data -->
+    <div class="table-responsive">
+      <table class="table table-condensed">
+        <thead>
+          <th>Data Mentah</th>
+        </thead>
+        <tbody>
+          <tr class="info">
+            <td>
+              <div id="raw_data">data</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-			<!-- Baris Bawah -->
-			<div class="row">
-				<div class="col-md-4">
-					<div id="grafik-acc-x" class="grafik"></div>
-				</div>
-				<div class="col-md-4">
-					<div id="grafik-acc-y" class="grafik"></div>
-				</div>
-				<div class="col-md-4">
-					<div id="grafik-acc-z" class="grafik"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 text-center">
-					<h4>3D Model</h4>
-					<div id="tride-model"></div>
-				</div>
-				<div class="col-md-6 text-center">
-					<div id="grafik-temperatur" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
-				</div>
-			</div>
-		</div>
+    <!-- Baris Bawah -->
+    <div class="row">
+      <div class="col-md-4">
+        <div id="grafik-acc-x" class="grafik"></div>
+      </div>
+      <div class="col-md-4">
+        <div id="grafik-acc-y" class="grafik"></div>
+      </div>
+      <div class="col-md-4">
+        <div id="grafik-acc-z" class="grafik"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h4>3D Model</h4>
+        <div id="tride-model"></div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div id="grafik-temperatur" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
+      </div>
+    </div>
+  </div>
 
-		<!-- Logo di Pojok -->
-		<div class="container">
-			<img id="babyCtlulhuEarth" src="./image/ctlulhuBaby+Earth.png" alt="">
-		</div>
+  <!-- Logo di Pojok -->
+  <div class="container">
+    <img id="babyCtlulhuEarth" src="./image/ctlulhuBaby+Earth.png" alt="">
+  </div>
 
-		<!-- Footer -->
-		<footer class="panel-footer" style="margin-top:50px">
-			<p class="text-center">
-				Written by Jordi Yaputra
-			</p>
-		</footer>
+  <!-- Footer -->
+  <footer class="panel-footer" style="margin-top:50px">
+    <p class="text-center">
+      Written by Jordi Yaputra
+    </p>
+  </footer>
 
-	</body>
+  <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+  <script defer src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <!-- Bagian Bootstrap -->
+  <!-- <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script> -->
+  <!-- <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script> -->
 
-	<!-- Jquery, Bootstrap, Highcharts -->
-	<script src="vendor/jquery/jquery-3.3.1.min.js"></script>
-	<script src="vendor/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-	<script src="vendor/Highcharts-6.0.7/code/highcharts.js"></script>
+  <script defer src="app/gmap.js"></script>
+  <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ4Q-_nLQuIVEMk-fD_g4NQX6PB406i4U&callback=initMap"></script>
+  <script defer src="https://code.highcharts.com/highcharts.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.js"></script>
+  <script defer src="vendor/gauge/gauge.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="app/tride.js"></script>
+  <script defer src="app/highchart.js"></script>
+  <script defer src="app/index.js"></script>
+  <!-- <script defer type="text/javascript" src="app/initial.js"></script> -->
 
-	<!-- Google Maps API -->
-	<!-- https://maps.googleapis.com/maps/api/js?key=AIzaSyAn1j9o_X6fVGOOQLoBjnzAr1JA7B3vSvA&callback=initMap -->
-	<!-- https://maps.googleapis.com/maps/api/js?key=AIzaSyANkLfRNm2-1tREG2vlxL6MRpNJXGszb5M&callback=initMap -->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ4Q-_nLQuIVEMk-fD_g4NQX6PB406i4U&callback=initMap"
-	>
-	</script>
+</body>
 
-	<!-- Three JS for 3D Model -->
-	<script src="vendor/THREE/THREE.js"></script>
-	<!-- Gauge -->
-	<script src="vendor/gauge/gauge.min.js"></script>
-	<!-- socket.io client -->
-	<script src="/socket.io/socket.io.js"></script>
-
-	<!-- import app -->
-	<script src="app/tride.js"></script>
-	<script src="app/gmap.js"></script>
-	<script src="app/highchart.js"></script>
-	<script src="app/index.js"></script>
 </html>
