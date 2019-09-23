@@ -36,20 +36,7 @@ const gaugeTemp = new LinearGauge({
     ticksAngle: 180,
     valueBox: false,
     maxValue: 220,
-    majorTicks: [
-        "0",
-        "20",
-        "40",
-        "60",
-        "80",
-        "100",
-        "120",
-        "140",
-        "160",
-        "180",
-        "200",
-        "220"
-    ],
+    majorTicks: ["0", "20", "40", "60", "80", "100", "120", "140", "160", "180", "200", "220"],
     minorTicks: 2,
     strokeTicks: true,
     highlights: [
@@ -79,19 +66,7 @@ const gaugeHumid = new RadialGauge({
     units: "%",
     minValue: 0,
     maxValue: 220,
-    majorTicks: [
-        "0",
-        "20",
-        "40",
-        "60",
-        "80",
-        "100",
-        "120",
-        "140",
-        "160",
-        "180",
-        "200",
-        "220"
+    majorTicks: ["0", "20", "40", "60", "80", "100", "120", "140", "160", "180", "200", "220"
     ],
     minorTicks: 2,
     strokeTicks: true,
@@ -114,7 +89,10 @@ const gaugeHumid = new RadialGauge({
     animationRule: "linear"
 }).draw();
 
-function update() {
+function onload() {
+
+    // Add EventListener socket.io sehingga setiap ada 'server-broadcast' yang masuk, callback dipanggil
+
     socket.on('server-broadcast', data => {
         // data terdiri atas clean, raw, series
         const dataHasil = data.clean;
@@ -170,9 +148,7 @@ function update() {
         if (map)
             map.update(coord);
     })
-}
 
-$(() => {
     // setting Highchart
     Highcharts.setOptions({ global: { useUTC: false } });
     chart.acc.x = new Hchart ('grafik-acc-x', 'Grafik Acc.x', 'Percepatan (m/s^2)', 'acc.x');
@@ -180,4 +156,6 @@ $(() => {
     chart.acc.z = new Hchart ('grafik-acc-z', 'Grafik Acc.z', 'Percepatan (m/s^2)', 'acc.z');
     chart.temp = new Hchart ('grafik-temperatur', 'Grafik Temperatur', 'Suhu (celcius)', 'temp');
     chart.ready = true;
-})
+}
+
+onload();
