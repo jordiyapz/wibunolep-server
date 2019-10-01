@@ -1,171 +1,320 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+        <link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
 
-<head>
-  <link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GUI Cthulhu</title>
-  <link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./styles/style.css">
+        <title>GUI Cthulhu</title>
 
-</head>
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="../plugins/morris/morris.css">
 
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-          aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-left">
-			<img id="main-logo" src="./image/logo.png"></a>
-        <a class="navbar-brand" href="#"><span id="main-brand">GUI Cthulhu</span></a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </nav>
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
+        <link href="css/custom1.css" rel="stylesheet">
 
-  <div class="container">
-    <br>
-    <br>
-    <br>
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
 
-    <!-- Tabel Data-data  -->
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Humidity</th>
-            <th>Temperature</th>
-            <th>Acc_x</th>
-            <th>Acc_y</th>
-            <th>Acc_z</th>
-            <th>Gyro_x</th>
-            <th>Gyro_y</th>
-            <th>Gyro_z</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="component-data">
-            <td id="latitude">data</td>
-            <td id="longitude">data</td>
-            <td id="humidity">data</td>
-            <td id="temperature">data</td>
-            <td id="acc_x">data</td>
-            <td id="acc_y">data</td>
-            <td id="acc_z">data</td>
-            <td id="gyro_x">data</td>
-            <td id="gyro_y">data</td>
-            <td id="gyro_z">data</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <script src="assets/js/modernizr.min.js"></script>
+
+        <style>
+            body{
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .cb{
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
 
 
-    <div class="row">
-      <div class="row" style="margin: 10px 0;">
-        <div class="col-sm-9 text-center">
-          <h4>Map</h4>
-          <div id="map" style="width:100%; height: 500px; background-color: grey;"></div>
+    <body>
+
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container">
+                    <!-- Logo container-->
+                    <div class="logo">
+                            <!-- Text Logo -->
+                            <!--<a href="index.html" class="logo">-->
+                                <!--Zircos-->
+                            <!--</a>-->
+                            <!-- Image Logo -->
+                            <a href="index.html" class="logo">
+                                <img src="./image/logo.png" alt="" ><span style="padding-left: 10px;color: #5AD79F;">GUI<span style="color: white;"> Cthulhu</span></a>
+                            </a>
+                        </div>
+                        <!-- End Logo container-->
+                        <div class="menu-extras">
+                            <div class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </div>
+                        </div>
+                </div> <!-- end container -->
+            <!-- end topbar-main -->
+
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-view-dashboard"></i>Home</a>
+                            </li>
+
+
+                        </ul>
+                        <!-- End navigation menu -->
+                    </div> <!-- end #navigation -->
+                </div> <!-- end container -->
+            </div> <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->
+
+
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Real Time Data - <small>Parameter Data Received</small></h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card-box tilebox-two tilebox-success cb">
+                                <i class="mdi mdi-map pull-right text-dark"></i>
+                            <h4 class="text-inverse header-title m-t-0">Latitude</h2>
+                            <h4 class="m-b-10 text-inverse" id="latitude"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card-box tilebox-two tilebox-success cb">
+                            <i class="mdi mdi-map pull-right text-dark"></i>
+                            <h4 class="text-inverse header-title m-t-0">Longitude</h2>
+                            <h4 class="m-b-10 text-inverse" id="longitude"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card-box tilebox-two tilebox-success cb">
+                            <i class="mdi mdi-water-percent pull-right text-dark"></i>
+                            <h4 class="text-inverse header-title m-t-0">Humidity</h2>
+                            <h4 class="m-b-10 text-inverse" id="humidity"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card-box tilebox-two tilebox-success cb">
+                            <i class="mdi mdi-oil-temperature pull-right text-dark"></i>
+                            <h4 class="text-inverse header-title m-t-0">Temperature</h2>
+                            <h4 class="m-b-10 text-inverse" id="temperature"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Acc X</h2>
+                            <h4 class="m-b-10 text-inverse" id="acc_x"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Acc Y</h2>
+                            <h4 class="m-b-10 text-inverse" id="acc_y"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Acc Z</h2>
+                            <h4 class="m-b-10 text-inverse" id="acc_z"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Gyro X</h2>
+                            <h4 class="m-b-10 text-inverse" id="gyro_x"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Gyro Y</h2>
+                            <h4 class="m-b-10 text-inverse" id="gyro_y"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-box tilebox-two tilebox-info cb">
+                            <h4 class="text-inverse header-title m-t-0">Gyro Z</h2>
+                            <h4 class="m-b-10 text-inverse" id="gyro_z"><span data-plugin="counterup">0</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+                <div class="row">
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                            <h2 class="header-title m-t-0"><small>Real Time Map</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="map" style="width:100%; height:584px; background-color: grey;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3" >
+                        <div class="x_panel">
+                            <div class="x_title">
+                            <h2 class="header-title m-t-0"><small>Gauge</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-sm-3 text-center">
+                                    <h4>Humidity</h4>
+                                    <canvas id="gaugeHumid"></canvas>
+                                    <h4>Temperature</h4>
+                                    <canvas id="gaugeTemp" style="margin-left: 50px;"> </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                            <h2 class="header-title m-t-0"><small>Grafik</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-4">
+                                    <div id="grafik-acc-x" class="grafik"></div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div id="grafik-acc-y" class="grafik"></div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div id="grafik-acc-z" class="grafik"></div>
+                                  </div>
+                                  <div class="col-md-6 text-center">
+                                    <h4>3D Model</h4>
+                                    <div id="tride-model"></div>
+                                  </div>
+                                  <div class="col-md-6 text-center">
+                                    <div id="grafik-temperatur" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="footer" style="background-color: #F3F3F3;">
+                        <div class="letak_tengah" id="localtime" style="margin-left: 20px"></div>
+                        &nbsp&nbsp&nbsp 2019 ©
+                        Crafted with <i class="fa fa-heart" style="color : #FF8A80;"></i> <a href="#" style="color : black; font-weight: bold;"> APTRG LAB </a>
+                        <!-- href="https://aptrg.lab.telkomuniversity.ac.id/"  -->
+                </footer>
+                <!-- End Footer -->
         </div>
+        <!-- jQuery  -->
 
-        <div class="col-sm-3 text-center">
-          <h4>Humidity</h4>
-          <canvas id="gaugeHumid"></canvas>
-          <h4>Temperature</h4>
-          <canvas id="gaugeTemp"> </canvas>
-        </div>
-      </div>
-    </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="../plugins/switchery/switchery.min.js"></script>
 
-    <!-- Raw Data -->
-    <div class="table-responsive">
-      <table class="table table-condensed">
-        <thead>
-          <th>Data Mentah</th>
-        </thead>
-        <tbody>
-          <tr class="info">
-            <td>
-              <div id="raw_data">data</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <!-- Counter js  -->
+        <script src="../plugins/waypoints/jquery.waypoints.min.js"></script>
+        <script src="../plugins/counterup/jquery.counterup.min.js"></script>
 
-    <!-- Baris Bawah -->
-    <div class="row">
-      <div class="col-md-4">
-        <div id="grafik-acc-x" class="grafik"></div>
-      </div>
-      <div class="col-md-4">
-        <div id="grafik-acc-y" class="grafik"></div>
-      </div>
-      <div class="col-md-4">
-        <div id="grafik-acc-z" class="grafik"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <h4>3D Model</h4>
-        <div id="tride-model"></div>
-      </div>
-      <div class="col-md-6 text-center">
-        <div id="grafik-temperatur" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
-      </div>
-    </div>
-  </div>
+        <!--Morris Chart-->
+		<script src="../plugins/morris/morris.min.js"></script>
+		<script src="../plugins/raphael/raphael-min.js"></script>
 
-  <!-- Logo di Pojok -->
-  <div class="container">
-    <img id="babyCtlulhuEarth" src="./image/chubby.png" alt="">
-  </div>
+        <!-- Dashboard init -->
+        <script src="assets/pages/jquery.dashboard.js"></script>
+        <script type="text/javascript" src="css/moment/moment.min.js"></script>
+        <script type="text/javascript" src="css/datepicker/daterangepicker.js"></script>
 
-  <!-- Footer -->
-  <footer class="panel-footer" style="margin-top:50px">
-    <p class="text-center">
-      Written by Jordi Yaputra
-    </p>
-  </footer>
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
 
-  <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-  <script defer src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-  <!-- Bagian Bootstrap -->
-  <!-- <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script> -->
-  <!-- <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script> -->
+        <!-- Featuring -->
+        <script defer src="app/gmap.js"></script>
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ4Q-_nLQuIVEMk-fD_g4NQX6PB406i4U&callback=initMap"></script>
+        <script defer src="https://code.highcharts.com/highcharts.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.js"></script>
+        <script defer src="vendor/gauge/gauge.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script defer src="app/tride.js"></script>
+        <script defer src="app/highchart.js"></script>
+        <script defer src="app/index.js"></script>
+        <script src="CSS/custom1.js"></script>
 
-  <script defer src="app/gmap.js"></script>
-  <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ4Q-_nLQuIVEMk-fD_g4NQX6PB406i4U&callback=initMap"></script>
-  <script defer src="https://code.highcharts.com/highcharts.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.js"></script>
-  <script defer src="vendor/gauge/gauge.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script defer src="app/tride.js"></script>
-  <script defer src="app/highchart.js"></script>
-  <script defer src="app/index.js"></script>
+        <script>
+            function clock() {
+            document.getElementById("localtime").innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
+            }
+            setInterval(clock, 1000);
+        </script>
 
-</body>
-
+    </body>
 </html>
