@@ -20,31 +20,37 @@ class Tride {
         this._timePresent = Date.now();
 
         this._inisialisasi3D(elemId, 470, 280, 25);
-        {
-            const that = this;
-            window.addEventListener('resize', function onWindowResize(){
-                console.log('resize', window.innerWidth, ' ', that.size.width);
-                this.console.log(that);
-                if (window.innerWidth < that.size.width + 113) {
-                    // that._tride.camera.updateProjectionMatrix();
-                    that.size.width =  window.innerWidth - 113;
-                    that._tride.camera.aspect = that.size.initw / that.size.height;
-                    that._tride.renderer.setSize( that.size.width, that.size.height );
-                } else {
-                    that.size.width =  that.size.initw;
-                    that._tride.camera.aspect = that.size.initw / that.size.height;
-                    that._tride.renderer.setSize( that.size.width, that.size.height );
-                }
-            }, false);
-        }
+        // {
+        //     const that = this;
+        //     window.addEventListener('resize', function onWindowResize(){
+        //         console.log('resize', window.innerWidth, ' ', that.size.width);
+        //         this.console.log(that);
+        //         if (window.innerWidth < that.size.width + 113) {
+        //             that._tride.camera.updateProjectionMatrix();
+        //             that.size.width =  window.innerWidth - 113;
+        //             that._tride.camera.aspect = that.size.initw / that.size.height;
+        //             that._tride.renderer.setSize( that.size.width, that.size.height );
+        //         } else {
+        //             that.size.width =  that.size.initw;
+        //             that._tride.camera.aspect = that.size.initw / that.size.height;
+        //             that._tride.renderer.setSize( that.size.width, that.size.height );
+        //         }
+        //     }, false);
+        // }
     }
 
     _inisialisasi3D(elemId, width, height, jarak) {
         this._tride.scene = new THREE.Scene();
         this._tride.camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
         this._tride.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        this._tride.renderer.setSize(width, height);
         this.size = {width, height, initw:width, inith:height};
+        if (window.innerWidth < width + 113) {
+            this.size.width =  window.innerWidth - 113;
+            this._tride.camera.aspect = this.size.width / height;
+            this._tride.camera.updateProjectionMatrix();
+            this._tride.renderer.setSize( this.size.width, height );
+        } else
+            this._tride.renderer.setSize(width, height);
         document.getElementById(elemId).appendChild(this._tride.renderer.domElement);
         // var geometry = new THREE.TorusBufferGeometry( 10, 3, 16, 100 );
         var geometry = new THREE.CylinderGeometry( 15, 15, 1, 3 );
