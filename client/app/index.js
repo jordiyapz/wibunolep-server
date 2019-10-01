@@ -9,8 +9,7 @@ const dom = {
     acc_z: document.getElementById('acc_z'),
     gyro_x: document.getElementById('gyro_x'),
     gyro_y: document.getElementById('gyro_y'),
-    gyro_z: document.getElementById('gyro_z'),
-    raw_data: document.getElementById('raw_data')
+    gyro_z: document.getElementById('gyro_z')
 }
 
 const acc = { x: 0, y: 0, z: 0 };
