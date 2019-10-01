@@ -6,7 +6,8 @@ class Tride {
             renderer : 0,
             model : 0,
             line : 0
-        }
+        };
+        this.size = {width:0, height:0, initw:0, inith:0};
         this._rot = { x: Math.PI, y: Math.PI, z: Math.PI };
         this._acc = acc;
         this._gyro = gyro;
@@ -19,6 +20,23 @@ class Tride {
         this._timePresent = Date.now();
 
         this._inisialisasi3D(elemId, 470, 280, 25);
+        {
+            const that = this;
+            window.addEventListener('resize', function onWindowResize(){
+                console.log('resize', window.innerWidth, ' ', that.size.width);
+                this.console.log(that);
+                if (window.innerWidth < that.size.width + 113) {
+                    // that._tride.camera.updateProjectionMatrix();
+                    that.size.width =  window.innerWidth - 113;
+                    that._tride.camera.aspect = that.size.initw / that.size.height;
+                    that._tride.renderer.setSize( that.size.width, that.size.height );
+                } else {
+                    that.size.width =  that.size.initw;
+                    that._tride.camera.aspect = that.size.initw / that.size.height;
+                    that._tride.renderer.setSize( that.size.width, that.size.height );
+                }
+            }, false);
+        }
     }
 
     _inisialisasi3D(elemId, width, height, jarak) {
@@ -26,6 +44,7 @@ class Tride {
         this._tride.camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
         this._tride.renderer = new THREE.WebGLRenderer( { antialias: true } );
         this._tride.renderer.setSize(width, height);
+        this.size = {width, height, initw:width, inith:height};
         document.getElementById(elemId).appendChild(this._tride.renderer.domElement);
         // var geometry = new THREE.TorusBufferGeometry( 10, 3, 16, 100 );
         var geometry = new THREE.CylinderGeometry( 15, 15, 1, 3 );
@@ -120,4 +139,6 @@ function doAnimation (tride) {
     }
     animate();
 }
+
+
 
