@@ -11,10 +11,9 @@ class DataHandler {
 
         this._chartSeries = {
             length: 10,
-            acc_x: [],
-            acc_y: [],
-            acc_z: [],
-            temp: []
+            alt: [],
+            as: [],
+            gs: []
         }
     }
 
@@ -32,7 +31,7 @@ class DataHandler {
     }
 
     update(new_data) {
-        // [<header>, <latitude>, <longitude>, <humidity>, <temperature>, <acc_x>, <acc_x>, <acc_x>, <gyro_x>, <gyro_y>, <gyro_z>]
+        // [head, alt, lat, lon, roll, pitch, yaw, heading, airspeed, groundspeed, mode, armed]
         const clean = this._parser(new_data);
         const dataTable = this._dataTable;
         dataTable.lastData = {clean, raw: new_data};
@@ -43,10 +42,9 @@ class DataHandler {
         history.push(new_data);
         // Process chart data
         const series = this._chartSeries;
-        this.seriesProcess(series.acc_x, clean[5]);
-        this.seriesProcess(series.acc_y, clean[6]);
-        this.seriesProcess(series.acc_z, clean[7]);
-        this.seriesProcess(series.temp, clean[4]);
+        this.seriesProcess(series.alt, clean[1]);
+        this.seriesProcess(series.as, clean[8]);
+        this.seriesProcess(series.gs, clean[9]);
     }
 
     seriesProcess(table, data) {
@@ -57,7 +55,7 @@ class DataHandler {
         // table.push(parseInt(data));
         table.push({
             x: currentTime,
-            y: parseInt(data)
+            y: parseFloat(data)
         })
     }
 
@@ -68,7 +66,7 @@ class DataHandler {
      *  [<header>, <latitude>, <longitude>, <humidity>, <temperature>, <acc_x>, <acc_x>, <acc_x>, <gyro_x>, <gyro_y>, <gyro_z>]
      */
     _parser(data) {
-        const regex = /([0-9|\.|-]*)/g;
+        const regex = /([0-9|a-z|A-Z|\.|-]*)/g;
         let hasilParsing = [];
         data.match(regex).forEach(element => {
             if (element != '')
